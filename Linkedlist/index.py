@@ -57,6 +57,26 @@ class LinkedList:
         while current:
             print(current.data, end=" -> " if current.next else "\n")
             current = current.next
+    # delete the first node
+    def delete_first_node(self):
+        if self.head is None:
+            return
+        self.head = self.head.next
+    
+    #delete the last node 
+    def delete_last_node(self):
+        if not self.head:
+            return  # nothing to delete if list is empty
+
+        if not self.head.next:
+            self.head = None  # if there is only one node
+            return
+
+        second_last = self.head
+        while second_last.next.next:
+            second_last = second_last.next
+        second_last.next = None
+            
 
 # Example usage
 if __name__ == "__main__":
@@ -72,3 +92,31 @@ if __name__ == "__main__":
     
     # Display the list
     linked_list.display()
+    
+    linked_list.insert_at_start(1)
+    
+
+    # print("Before deleting the last node:")
+    # linked_list.print_list()
+
+    # linked_list.delete_last_node()
+
+    # print("After deleting the last node:")
+    # linked_list.print_list()
+    
+# // delete last node (second last node)
+
+# LinkedList.prototype.delete_last_node = function(){
+#     if(!this.head )
+#     return    // nothing to delete if list is empty
+# }
+# if(this.head.next){
+#     this.head = null // if there is only one node
+#     return 
+# }
+#  while(secondlast.next.next){
+#      secondlast = secondlast.next
+#  }
+#   let secondlast = head
+#   secondlast.next = null
+  
