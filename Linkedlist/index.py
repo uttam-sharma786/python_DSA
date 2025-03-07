@@ -77,7 +77,44 @@ class LinkedList:
             second_last = second_last.next
         second_last.next = None
             
+    # linked list delete a node with given (value)
+    def deleteByKey(self, key):
+        if not self.head:
+            print("List is empty")
+            return
+        
+        # Check if the head node is the one to be deleted
+        if self.head.data == key:
+            self.head = self.head.next
+            return
+        
+        current = self.head
+        while current.next is not None:
+            if current.next.data == key:
+                current.next = current.next.next
+                return
+            current = current.next
+        
+        print("No node found with key:", key)
+    
+    def search(self, key):
+        current = self.head
+        while current:
+            if current.data == key:
+                return True
+            current = current.next
+        return False
 
+    
+    def traverse(self):
+        current = self.head
+        traverse_list = []  # Renamed to avoid confusion with the method name
+        while current:
+            traverse_list.append(current.data)  # Convert data to string for joining
+            current = current.next  # Move to the next node
+        print(" -> ".join(traverse_list))  # Corrected join syntax
+
+    
 # Example usage
 if __name__ == "__main__":
     # Create a new linked list
@@ -120,3 +157,47 @@ if __name__ == "__main__":
 #   let secondlast = head
 #   secondlast.next = null
   
+  
+# linkedList.prototype.delete.ByKey = function(key){
+#     if(!this.head){
+#         console.log("list is empty")
+#         return
+#     }
+#     if(this.head.data === key){
+#         this.head = this.head.next
+#         return 
+#     }
+#     let current = this.head
+#     while(current.next == null){
+#         if(current.next.data === key)
+#         current.next = current.next.next
+#         return 
+#     }
+#     current = current.next
+# }
+# console.log("No node found with key:",key)
+
+
+# // search operation
+
+# LinkedList.prototype.search = function(key){
+#     let current = this.head
+#     # current.data === key
+#     while(current){
+#         if(current.data === key){
+#             return true 
+#         }
+#         return False
+#     }
+# }
+
+
+# // traverse
+# LinkedList.prototype.printlist = function(){
+#     let current = this.head
+#     let listValuse =[]
+#       while(current){
+#           listValuse.push(current.data) // add data to list
+#           current = current.next // move to next node
+#       }
+# # }
