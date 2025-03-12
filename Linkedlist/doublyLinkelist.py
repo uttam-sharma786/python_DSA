@@ -25,6 +25,15 @@ class doublyLinkedList:
             new_node.next = self.head   #Connect new node to existing head
             self.head.prev = new_node     # connect existing head back to new node 
             self.head = new_node      # update head reference
+    def insert_at_end(self, data):
+        new_node = Node(data)  # create new node instance
+        if self.tail is not None:
+            self.tail.next = new_node
+            self.tail = new_node 
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        
         
 if __name__ == "__main__":
     dll = doublyLinkedList()
@@ -34,9 +43,14 @@ if __name__ == "__main__":
     dll.insert_at_start(40)
     
     # verify connection
-    print(dll.head.data)
-    print(dll.tail.data)
+    # print(dll.head.data)
+    # print(dll.tail.data)
+    # print(dll)
     
+    
+    dll.insert_at_end(20)
+    print(dll.tail.data)
+    print(dll.head.next)
 
 
-        
+
